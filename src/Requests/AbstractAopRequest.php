@@ -84,8 +84,10 @@ abstract class AbstractAopRequest extends AbstractRequest
         if (strtoupper($this->getSignType()) === 'RSA2') {
             $alipayRootCert = $this->getAlipayRootCert();
             $appCert = $this->getAppCert();
-            if (is_file($alipayRootCert) && is_file($appCert)) {
+            if($alipayRootCert){
                 $this->setParameter('alipay_root_cert_sn', getRootCertSN($alipayRootCert));
+            }
+            if($appCert){
                 $this->setParameter('app_cert_sn', getCertSN($appCert));
             }
         }

@@ -166,7 +166,7 @@ class Signer
             }
         }
 
-        openssl_free_key($res);
+
 
         return base64_encode($sign);
     }
@@ -273,7 +273,7 @@ class Signer
 
         $result = (bool) openssl_verify($content, base64_decode($sign), $res, $alg);
 
-        openssl_free_key($res);
+
 
         return $result;
     }

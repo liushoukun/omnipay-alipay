@@ -4,9 +4,9 @@ if (!function_exists('array_get')) {
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param array  $array
+     * @param array $array
      * @param string $key
-     * @param mixed  $default
+     * @param mixed $default
      *
      * @return mixed
      */
@@ -100,14 +100,19 @@ if (!function_exists('getRootCertSN')) {
      */
     function getRootCertSN($certPath)
     {
-        $array = explode('-----END CERTIFICATE-----', file_get_contents($certPath));
+        if (is_file($certPath)) {
+            $cert = file_get_contents($certPath);
+        } else {
+            $cert = $certPath;
+        }
+        $array = explode('-----END CERTIFICATE-----', $cert);
 
         $rootSN = null;
 
         foreach ($array as $i) {
             $ssl = openssl_x509_parse($i . '-----END CERTIFICATE-----');
 
-            if ($ssl && in_array($ssl['signatureTypeLN'], ['sha1WithRSAEncryption', 'sha256WithRSAEncryption'])) {
+            if ($ssl && in_array($ssl['signatureTypeLN'], [ 'sha1WithRSAEncryption', 'sha256WithRSAEncryption' ])) {
                 $sn = getCertSN($ssl, true);
                 if (is_null($rootSN)) {
                     $rootSN = $sn;
@@ -124,7 +129,7 @@ if (!function_exists('getRootCertSN')) {
 if (!function_exists('getCertSN')) {
     /**
      * @param string $cert
-     * @param bool   $parsed
+     * @param bool $parsed
      *
      * @return string|null
      */
@@ -162,8 +167,8 @@ if (!function_exists('getPublicKey')) {
      */
     function getPublicKey($certPath)
     {
-        $pkey = openssl_pkey_get_public(file_get_contents($certPath));
-        $keyData = openssl_pkey_get_details($pkey);
+        $pkey       = openssl_pkey_get_public(file_get_contents($certPath));
+        $keyData    = openssl_pkey_get_details($pkey);
         $public_key = str_replace('-----BEGIN PUBLIC KEY-----', '', $keyData['key']);
         return trim(str_replace('-----END PUBLIC KEY-----', '', $public_key));
     }
