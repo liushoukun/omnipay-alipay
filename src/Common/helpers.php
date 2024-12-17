@@ -167,7 +167,12 @@ if (!function_exists('getPublicKey')) {
      */
     function getPublicKey($certPath)
     {
-        $pkey       = openssl_pkey_get_public(file_get_contents($certPath));
+        if (is_file($certPath)) {
+            $cert = file_get_contents($certPath);
+        } else {
+            $cert = $certPath;
+        }
+        $pkey       = openssl_pkey_get_public($cert);
         $keyData    = openssl_pkey_get_details($pkey);
         $public_key = str_replace('-----BEGIN PUBLIC KEY-----', '', $keyData['key']);
         return trim(str_replace('-----END PUBLIC KEY-----', '', $public_key));
