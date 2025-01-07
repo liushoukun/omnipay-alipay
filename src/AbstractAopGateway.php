@@ -21,7 +21,7 @@ abstract class AbstractAopGateway extends AbstractGateway
 {
     protected $endpoints = [
         'production' => 'https://openapi.alipay.com/gateway.do',
-        'sandbox'    => 'https://openapi.alipaydev.com/gateway.do',
+        'sandbox'    => 'https://openapi-sandbox.dl.alipaydev.com/gateway.do',
     ];
 
 

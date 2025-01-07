@@ -18,7 +18,7 @@ processing library for PHP. This package implements Alipay support for Omnipay.
 
 ## Installation
 
-    composer require lokielse/omnipay-alipay
+    composer require liushoukun/omnipay-alipay
 
 ## Basic Usage
 
