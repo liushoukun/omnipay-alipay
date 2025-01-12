@@ -10,10 +10,11 @@ use Omnipay\Alipay\Requests\AopTradeOrderSettleRequest;
 use Omnipay\Alipay\Requests\AopTradeQueryRequest;
 use Omnipay\Alipay\Requests\AopTradeRefundQueryRequest;
 use Omnipay\Alipay\Requests\AopTradeRefundRequest;
+use Omnipay\Alipay\Requests\AopTransferCommonQueryRequest;
 use Omnipay\Alipay\Requests\AopTransferToAccountQueryRequest;
-use Omnipay\Alipay\Requests\AopTransferToAccountRequest;
 use Omnipay\Alipay\Requests\AopTransferUniRequest;
 use Omnipay\Alipay\Requests\DataServiceBillDownloadUrlQueryRequest;
+use Omnipay\Alipay\Responses\AopTransferCommonQueryResponse;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\AbstractRequest;
@@ -557,11 +558,11 @@ abstract class AbstractAopGateway extends AbstractGateway
      *
      * @param array $parameters
      *
-     * @return AopTransferToAccountQueryRequest|AbstractRequest
+     * @return AopTransferCommonQueryRequest|AbstractRequest
      */
     public function transferQuery(array $parameters = [])
     {
-        return $this->createRequest(AopTransferToAccountQueryRequest::class, $parameters);
+        return $this->createRequest(AopTransferCommonQueryResponse::class, $parameters);
     }
 
 
