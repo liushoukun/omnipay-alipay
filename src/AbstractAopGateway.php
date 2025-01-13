@@ -562,7 +562,7 @@ abstract class AbstractAopGateway extends AbstractGateway
      */
     public function transferQuery(array $parameters = [])
     {
-        return $this->createRequest(AopTransferCommonQueryResponse::class, $parameters);
+        return $this->createRequest(AopTransferCommonQueryRequest::class, $parameters);
     }
 
 
