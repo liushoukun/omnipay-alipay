@@ -588,4 +588,21 @@ abstract class AbstractAopGateway extends AbstractGateway
     {
         return $this->createRequest(DataServiceBillDownloadUrlQueryRequest::class, $parameters);
     }
+
+
+    public function bindSettleRelation(array $parameters = [])
+    {
+
+    }
+
+    public function unbindSettleRelation()
+    {
+
+    }
+
+    public function querySettleRelation()
+    {
+
+    }
+
 }
