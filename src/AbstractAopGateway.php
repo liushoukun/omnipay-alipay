@@ -11,10 +11,11 @@ use Omnipay\Alipay\Requests\AopTradeQueryRequest;
 use Omnipay\Alipay\Requests\AopTradeRefundQueryRequest;
 use Omnipay\Alipay\Requests\AopTradeRefundRequest;
 use Omnipay\Alipay\Requests\AopTransferCommonQueryRequest;
-use Omnipay\Alipay\Requests\AopTransferToAccountQueryRequest;
 use Omnipay\Alipay\Requests\AopTransferUniRequest;
 use Omnipay\Alipay\Requests\DataServiceBillDownloadUrlQueryRequest;
-use Omnipay\Alipay\Responses\AopTransferCommonQueryResponse;
+use Omnipay\Alipay\Requests\SettleRelationBindRequest;
+use Omnipay\Alipay\Requests\SettleRelationQueryRequest;
+use Omnipay\Alipay\Requests\SettleRelationUnbindRequest;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\AbstractRequest;
@@ -232,7 +233,7 @@ abstract class AbstractAopGateway extends AbstractGateway
 
 
     /**
-     * @param bool $value
+     * @param  bool  $value
      *
      * @return $this
      */
@@ -450,7 +451,7 @@ abstract class AbstractAopGateway extends AbstractGateway
     /**
      * @noinspection PhpDocRedundantThrowsInspection
      *
-     * @param array $parameters
+     * @param  array  $parameters
      *
      * @return AopCompletePurchaseRequest|AbstractRequest
      * @throws InvalidRequestException
@@ -464,7 +465,7 @@ abstract class AbstractAopGateway extends AbstractGateway
     /**
      * @noinspection PhpDocRedundantThrowsInspection
      *
-     * @param array $parameters
+     * @param  array  $parameters
      *
      * @return AopCompleteRefundRequest|AbstractRequest
      * @throws InvalidRequestException
@@ -478,7 +479,7 @@ abstract class AbstractAopGateway extends AbstractGateway
     /**
      * Query Order Status
      *
-     * @param array $parameters
+     * @param  array  $parameters
      *
      * @return AopTradeQueryRequest|AbstractRequest
      */
@@ -491,7 +492,7 @@ abstract class AbstractAopGateway extends AbstractGateway
     /**
      * Refund
      *
-     * @param array $parameters
+     * @param  array  $parameters
      *
      * @return AopTradeRefundRequest|AbstractRequest
      */
@@ -504,7 +505,7 @@ abstract class AbstractAopGateway extends AbstractGateway
     /**
      * Query Refund Status
      *
-     * @param array $parameters
+     * @param  array  $parameters
      *
      * @return AopTradeRefundQueryRequest|AbstractRequest
      */
@@ -517,7 +518,7 @@ abstract class AbstractAopGateway extends AbstractGateway
     /**
      * Close Order
      *
-     * @param array $parameters
+     * @param  array  $parameters
      *
      * @return AopTradeCloseRequest|AbstractRequest
      */
@@ -530,7 +531,7 @@ abstract class AbstractAopGateway extends AbstractGateway
     /**
      * Cancel Order
      *
-     * @param array $parameters
+     * @param  array  $parameters
      *
      * @return AopTradeCancelRequest|AbstractRequest
      */
@@ -543,7 +544,7 @@ abstract class AbstractAopGateway extends AbstractGateway
     /**
      * Transfer To Account
      *
-     * @param array $parameters
+     * @param  array  $parameters
      *
      * @return AopTransferUniRequest|AbstractRequest
      */
@@ -556,7 +557,7 @@ abstract class AbstractAopGateway extends AbstractGateway
     /**
      * Query Transfer Status
      *
-     * @param array $parameters
+     * @param  array  $parameters
      *
      * @return AopTransferCommonQueryRequest|AbstractRequest
      */
@@ -569,7 +570,7 @@ abstract class AbstractAopGateway extends AbstractGateway
     /**
      * Settle
      *
-     * @param array $parameters
+     * @param  array  $parameters
      *
      * @return AopTradeCancelRequest|AbstractRequest
      */
@@ -580,7 +581,7 @@ abstract class AbstractAopGateway extends AbstractGateway
 
 
     /**
-     * @param array $parameters
+     * @param  array  $parameters
      *
      * @return AbstractRequest
      */
@@ -590,19 +591,24 @@ abstract class AbstractAopGateway extends AbstractGateway
     }
 
 
+    /**
+     * @param  array  $parameters
+     *
+     * @return AbstractRequest|SettleRelationBindRequest
+     */
     public function bindSettleRelation(array $parameters = [])
     {
-
+        return $this->createRequest(SettleRelationBindRequest::class, $parameters);
     }
 
-    public function unbindSettleRelation()
+    public function unbindSettleRelation(array $parameters = [])
     {
-
+        return $this->createRequest(SettleRelationUnbindRequest::class, $parameters);
     }
 
-    public function querySettleRelation()
+    public function querySettleRelation(array $parameters = [])
     {
-
+        return $this->createRequest(SettleRelationQueryRequest::class, $parameters);
     }
 
 }
