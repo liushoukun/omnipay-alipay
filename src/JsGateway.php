@@ -2,15 +2,16 @@
 
 namespace Omnipay\Alipay;
 
-use Omnipay\Alipay\Requests\AopTradePagePayRequest;
+use Omnipay\Alipay\Requests\AopTradeCreateRequest;
 use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\Common\Message\RequestInterface;
 
 /**
- * Class AopPageGateway
+ * Class AopJsGateway
  *
  * @package Omnipay\Alipay
- * @link    https://docs.open.alipay.com/api_1/alipay.trade.page.pay
+ * @link    https://docs.open.alipay.com/api_1/alipay.trade.create
+ * @link    https://myjsapi.alipay.com/jsapi/native/trade-pay.html
  * @method RequestInterface authorize(array $options = array())
  * @method RequestInterface completeAuthorize(array $options = array())
  * @method RequestInterface capture(array $options = array())
@@ -19,7 +20,7 @@ use Omnipay\Common\Message\RequestInterface;
  * @method RequestInterface updateCard(array $options = array())
  * @method RequestInterface deleteCard(array $options = [])
  */
-class AopPageGateway extends AbstractAopGateway
+class JsGateway extends AbstractAopGateway
 {
 
     /**
@@ -29,27 +30,7 @@ class AopPageGateway extends AbstractAopGateway
      */
     public function getName()
     {
-        return 'Alipay Page Gateway';
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getReturnUrl()
-    {
-        return $this->getParameter('return_url');
-    }
-
-
-    /**
-     * @param $value
-     *
-     * @return $this
-     */
-    public function setReturnUrl($value)
-    {
-        return $this->setParameter('return_url', $value);
+        return 'Alipay Js Gateway';
     }
 
 
@@ -60,6 +41,6 @@ class AopPageGateway extends AbstractAopGateway
      */
     public function purchase(array $parameters = [])
     {
-        return $this->createRequest(AopTradePagePayRequest::class, $parameters);
+        return $this->createRequest(AopTradeCreateRequest::class, $parameters);
     }
 }

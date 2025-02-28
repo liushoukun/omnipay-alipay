@@ -2,24 +2,24 @@
 
 namespace Omnipay\Alipay;
 
-use Omnipay\Alipay\Requests\AopTradeWapPayRequest;
+use Omnipay\Alipay\Requests\AopTradePagePayRequest;
 use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\Common\Message\RequestInterface;
 
 /**
- * Class AopWapGateway
+ * Class AopPageGateway
  *
  * @package Omnipay\Alipay
- * @link    https://docs.open.alipay.com/203/105288
- * @method RequestInterface authorize(array $options = [])
- * @method RequestInterface completeAuthorize(array $options = [])
- * @method RequestInterface capture(array $options = [])
- * @method RequestInterface void(array $options = [])
- * @method RequestInterface createCard(array $options = [])
- * @method RequestInterface updateCard(array $options = [])
+ * @link    https://docs.open.alipay.com/api_1/alipay.trade.page.pay
+ * @method RequestInterface authorize(array $options = array())
+ * @method RequestInterface completeAuthorize(array $options = array())
+ * @method RequestInterface capture(array $options = array())
+ * @method RequestInterface void(array $options = array())
+ * @method RequestInterface createCard(array $options = array())
+ * @method RequestInterface updateCard(array $options = array())
  * @method RequestInterface deleteCard(array $options = [])
  */
-class AopWapGateway extends AbstractAopGateway
+class NativeGateway extends AbstractAopGateway
 {
 
     /**
@@ -29,7 +29,7 @@ class AopWapGateway extends AbstractAopGateway
      */
     public function getName()
     {
-        return 'Alipay WAP Gateway';
+        return 'Alipay Page Gateway';
     }
 
 
@@ -60,6 +60,6 @@ class AopWapGateway extends AbstractAopGateway
      */
     public function purchase(array $parameters = [])
     {
-        return $this->createRequest(AopTradeWapPayRequest::class, $parameters);
+        return $this->createRequest(AopTradePagePayRequest::class, $parameters);
     }
 }

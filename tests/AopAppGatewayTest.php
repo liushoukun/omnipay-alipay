@@ -2,7 +2,7 @@
 
 namespace Omnipay\Alipay\Tests;
 
-use Omnipay\Alipay\AopAppGateway;
+use Omnipay\Alipay\AppGateway;
 use Omnipay\Alipay\Common\Signer;
 use Omnipay\Alipay\Responses\AopCompletePurchaseResponse;
 use Omnipay\Alipay\Responses\AopCompleteRefundResponse;
@@ -13,7 +13,7 @@ class AopAppGatewayTest extends AbstractGatewayTestCase
 {
 
     /**
-     * @var AopAppGateway $gateway
+     * @var AppGateway $gateway
      */
     protected $gateway;
 
@@ -23,7 +23,7 @@ class AopAppGatewayTest extends AbstractGatewayTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->gateway = new AopAppGateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->gateway = new AppGateway($this->getHttpClient(), $this->getHttpRequest());
         $this->gateway->setAppId($this->appId);
         $this->gateway->setPrivateKey(ALIPAY_AOP_PRIVATE_KEY);
         //$this->gateway->setAlipayPublicKey(file_get_contents($this->alipayPublicKey));
@@ -109,7 +109,7 @@ class AopAppGatewayTest extends AbstractGatewayTestCase
         $testPrivateKey = ALIPAY_ASSET_DIR . '/dist/common/rsa_private_key.pem';
         $testPublicKey  = ALIPAY_ASSET_DIR . '/dist/common/rsa_public_key.pem';
 
-        $this->gateway = new AopAppGateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->gateway = new AppGateway($this->getHttpClient(), $this->getHttpRequest());
         $this->gateway->setAppId($this->appId);
         $this->gateway->setPrivateKey($this->appPrivateKey);
         $this->gateway->setNotifyUrl('https://www.example.com/notify');
@@ -152,7 +152,7 @@ class AopAppGatewayTest extends AbstractGatewayTestCase
         $testPrivateKey = ALIPAY_ASSET_DIR . '/dist/common/rsa_private_key.pem';
         $testPublicKey  = ALIPAY_ASSET_DIR . '/dist/common/rsa_public_key_inline.pem';
 
-        $this->gateway = new AopAppGateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->gateway = new AppGateway($this->getHttpClient(), $this->getHttpRequest());
         $this->gateway->setAppId($this->appId);
         $this->gateway->setPrivateKey($this->appPrivateKey);
         $this->gateway->setNotifyUrl('https://www.example.com/notify');
@@ -194,7 +194,7 @@ class AopAppGatewayTest extends AbstractGatewayTestCase
         $testPrivateKey = ALIPAY_ASSET_DIR . '/dist/common/rsa_private_key.pem';
         $testPublicKey  = ALIPAY_ASSET_DIR . '/dist/common/rsa_public_key_inline.pem';
 
-        $this->gateway = new AopAppGateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->gateway = new AppGateway($this->getHttpClient(), $this->getHttpRequest());
         $this->gateway->setAppId($this->appId);
         $this->gateway->setPrivateKey($this->appPrivateKey);
         $this->gateway->setNotifyUrl('https://www.example.com/notify');

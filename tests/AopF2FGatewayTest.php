@@ -2,7 +2,7 @@
 
 namespace Omnipay\Alipay\Tests;
 
-use Omnipay\Alipay\AopF2FGateway;
+use Omnipay\Alipay\F2FGateway;
 use Omnipay\Alipay\Common\Signer;
 use Omnipay\Alipay\Responses\AopCompletePurchaseResponse;
 use Omnipay\Alipay\Responses\AopCompleteRefundResponse;
@@ -17,7 +17,7 @@ class AopF2FGatewayTest extends AbstractGatewayTestCase
 {
 
     /**
-     * @var AopF2FGateway $gateway
+     * @var F2FGateway $gateway
      */
     protected $gateway;
 
@@ -27,7 +27,7 @@ class AopF2FGatewayTest extends AbstractGatewayTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->gateway = new AopF2FGateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->gateway = new F2FGateway($this->getHttpClient(), $this->getHttpRequest());
         $this->gateway->setAppId($this->appId);
         $this->gateway->setPrivateKey($this->appPrivateKey);
         $this->gateway->setEncryptKey($this->appEncryptKey);
@@ -204,7 +204,7 @@ class AopF2FGatewayTest extends AbstractGatewayTestCase
         $testPrivateKey = ALIPAY_ASSET_DIR . '/dist/common/rsa_private_key.pem';
         $testPublicKey = ALIPAY_ASSET_DIR . '/dist/common/rsa_public_key.pem';
 
-        $this->gateway = new AopF2FGateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->gateway = new F2FGateway($this->getHttpClient(), $this->getHttpRequest());
         $this->gateway->setAppId($this->appId);
         $this->gateway->setPrivateKey($this->appPrivateKey);
         $this->gateway->setNotifyUrl('https://www.example.com/notify');
@@ -242,7 +242,7 @@ class AopF2FGatewayTest extends AbstractGatewayTestCase
         $testPrivateKey = ALIPAY_ASSET_DIR . '/dist/common/rsa_private_key.pem';
         $testPublicKey = ALIPAY_ASSET_DIR . '/dist/common/rsa_public_key.pem';
 
-        $this->gateway = new AopF2FGateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->gateway = new F2FGateway($this->getHttpClient(), $this->getHttpRequest());
         $this->gateway->setAppId($this->appId);
         $this->gateway->setPrivateKey($this->appPrivateKey);
         $this->gateway->setNotifyUrl('https://www.example.com/notify');

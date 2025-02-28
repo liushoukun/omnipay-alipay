@@ -39,5 +39,11 @@
     "squizlabs/php_codesniffer": "^3.4"
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "extra": {
+    "branch-alias": {
+      "dev-master": "3.x.x-dev",
+      "dev-main": "3.x.x-dev"
+    }
+  }
 }

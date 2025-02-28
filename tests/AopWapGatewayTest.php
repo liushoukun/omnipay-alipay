@@ -2,7 +2,7 @@
 
 namespace Omnipay\Alipay\Tests;
 
-use Omnipay\Alipay\AopWapGateway;
+use Omnipay\Alipay\WapGateway;
 use Omnipay\Alipay\Common\Signer;
 use Omnipay\Alipay\Responses\AopCompletePurchaseResponse;
 use Omnipay\Alipay\Responses\AopCompleteRefundResponse;
@@ -12,7 +12,7 @@ class AopWapGatewayTest extends AbstractGatewayTestCase
 {
 
     /**
-     * @var AopWapGateway $gateway
+     * @var WapGateway $gateway
      */
     protected $gateway;
 
@@ -22,7 +22,7 @@ class AopWapGatewayTest extends AbstractGatewayTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->gateway = new AopWapGateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->gateway = new WapGateway($this->getHttpClient(), $this->getHttpRequest());
         $this->gateway->setAppId($this->appId);
         $this->gateway->setPrivateKey($this->appPrivateKey);
         $this->gateway->setNotifyUrl('https://www.example.com/notify');

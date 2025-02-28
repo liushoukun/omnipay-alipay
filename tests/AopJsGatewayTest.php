@@ -2,14 +2,14 @@
 
 namespace Omnipay\Alipay\Tests;
 
-use Omnipay\Alipay\AopJsGateway;
+use Omnipay\Alipay\JsGateway;
 use Omnipay\Alipay\Responses\AopTradeCreateResponse;
 
 class AopJsGatewayTest extends AbstractGatewayTestCase
 {
 
     /**
-     * @var AopJsGateway $gateway
+     * @var JsGateway $gateway
      */
     protected $gateway;
 
@@ -19,7 +19,7 @@ class AopJsGatewayTest extends AbstractGatewayTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->gateway = new AopJsGateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->gateway = new JsGateway($this->getHttpClient(), $this->getHttpRequest());
         $this->gateway->setAppId($this->appId);
         $this->gateway->setPrivateKey(ALIPAY_AOP_PRIVATE_KEY);
     }

@@ -19,7 +19,7 @@ use Omnipay\Common\Message\RequestInterface;
  * @method RequestInterface updateCard(array $options = [])
  * @method RequestInterface deleteCard(array $options = [])
  */
-class AopAppGateway extends AbstractAopGateway
+class AppGateway extends AbstractAopGateway
 {
 
     /**
